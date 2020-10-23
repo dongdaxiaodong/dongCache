@@ -1,4 +1,7 @@
 package rejectStrategy;
+import com.dongdaxiaodong.dongCache.ByteView;
+import com.dongdaxiaodong.dongCache.DongCache;
+import com.dongdaxiaodong.dongCache.Group;
 import com.dongdaxiaodong.dongCache.rejectStrategy.CallBack;
 import com.dongdaxiaodong.dongCache.rejectStrategy.Lru;
 import org.junit.Test;
@@ -20,7 +23,12 @@ public class TestLru {
     }
 
     @Test
-    public void testLru1(){
-
+    public void testDongCache(){
+        DongCache.NewGroup("scores",2<<10);
+        Group  group = DongCache.GetGroup("scores");
+        System.out.println(group);
+        group.Add("Tom",new ByteView("630".getBytes()));
+        group.Add("Jack",new ByteView("589".getBytes()));
+        System.out.println(group.Get("Tom").String());
     }
 }
