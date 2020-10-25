@@ -16,7 +16,7 @@ public class Map{
         this.replicas = replicas;
         this.hash = fn;
     }
-    static Map New(int replicas,Hash fn){
+    public static Map New(int replicas,Hash fn){
         Map newMap = new Map(replicas,fn);
         if(fn == null){
             newMap.hash = data -> {
